@@ -21,6 +21,10 @@ const Home = asyncComponent(() =>
     import('./Home/Home').then(module => module.default)
 )
 
+const Login = asyncComponent(() =>
+    import('./Login/login_page').then(module => module.default)
+)
+
 const Maps = asyncComponent(() =>
     import('./Maps/Maps').then(module => module.default)
 )
@@ -45,6 +49,9 @@ class App extends Component {
                             </div>
 
                             <div className="navbar-end">
+                                <Link to="/login">
+                                  <span className="navbar-item">Login</span>
+                                </Link>
                                 <Link to="/maps">
                                     <span className="navbar-item">Maps</span>
                                 </Link>
@@ -58,6 +65,7 @@ class App extends Component {
                     <section className="content">
                         <Switch>
                             <Route exact path="/" component={Home} />
+                            <Route exact path="/login" component={Login} />
                             <Route path="/maps" component={Maps} />
                             <Route path="/blog" component={Blog} />
                             <Route path="*" component={NotFound} />

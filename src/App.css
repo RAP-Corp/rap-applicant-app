@@ -7,7 +7,12 @@
 }
 .navbar-item {
   color: white !important;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 .content {
   margin-top: 50px;
 }
+/* .navbar-item:hover {
+  background-color: #b7b7b7;
+} */
