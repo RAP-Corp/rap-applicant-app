@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+    Router,
     Route,
     Switch,
     Link
@@ -12,10 +12,12 @@ import {
 // // Import the Blogs component to be used below
 // import Blog from './Blog/Blog'
 
-import NotFound from './NotFound/NotFound'
+import NotFound from './NotFound/NotFound';
 import './App.css';
 import createBrowserHistory from 'history/createBrowserHistory';
-import asyncComponent from './AsyncComponent'
+import asyncComponent from './AsyncComponent';
+import store from './store';
+import { Provider } from 'react-redux';
 
 const Home = asyncComponent(() =>
     import('./Home/Home').then(module => module.default)
@@ -38,6 +40,7 @@ const history = createBrowserHistory();
 class App extends Component {
     render () {
         return (
+          <Provider store={store}>
             <Router history={history}>
                 <div>
                     <header className="header">
@@ -73,6 +76,7 @@ class App extends Component {
                     </section>
                 </div>
             </Router>
+          </Provider>
         )
     }
 }

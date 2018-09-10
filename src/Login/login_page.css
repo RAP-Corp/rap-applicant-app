@@ -29,6 +29,7 @@ button:hover {
   position:relative;
   padding-top: 20px;
   color: black;
+  font-size: small;
 }
 .forgotLink:hover {
   color: blue;
