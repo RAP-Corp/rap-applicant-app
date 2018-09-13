@@ -1,0 +1,12 @@
+{
+  "user": [
+    {
+      "profileStatus" : "admin",
+      "username" : "KEVBOT"
+    },
+    {
+      "profileStatus" : "user",
+      "username" : "ry guy"
+    }
+  ]
+}
