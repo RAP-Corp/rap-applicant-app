@@ -5,12 +5,16 @@ import {
     Switch,
     Link
 } from 'react-router-dom'
-// // Import the Home component to be used below
-// import Home from './Home/Home'
-// // Import the Maps component to be used below
-// import Maps from './Maps/Maps'
-// // Import the Blogs component to be used below
-// import Blog from './Blog/Blog'
+// import { Provider as AlertProvider } from 'react-alert';
+// import AlertTemplate from 'react-alert-template-basic';
+//
+// //optional alert configuration
+// const options = {
+//   position: 'bottom center',
+//   timeout: 5000,
+//   offset: '30px',
+//   transition: 'scale'
+// }
 
 import NotFound from './NotFound/NotFound';
 import './App.css';
