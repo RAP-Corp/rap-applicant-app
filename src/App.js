@@ -35,6 +35,21 @@ const Blog = asyncComponent(() =>
     import('./Blog/Blog').then(module => module.default)
 )
 
+//Routing for all different paths
+const AdminHome = asyncComponent(() =>
+    import('./Paths/AdminPath/adminHome').then(module => module.default)
+)
+const HiringManagerHome = asyncComponent(() =>
+    import('./Paths/HiringManagerPath/hiringManagerHome').then(module => module.default)
+)
+const CommunicationsHome = asyncComponent(() =>
+    import('./Paths/CommunicationsPath/communicationsHome').then(module => module.default)
+)
+const ApplicantHome = asyncComponent(() =>
+    import('./Paths/ApplicantPath/applicantHome').then(module => module.default)
+)
+
+//Creating of history for redirecting
 const history = createBrowserHistory();
 
 class App extends Component {
@@ -67,8 +82,13 @@ class App extends Component {
 
                     <section className="content">
                         <Switch>
-                            <Route exact path="/" component={Home} />
+                        //Specific paths for reference anywhere in the app
+                            <Route exact path="/" component={Login} />
                             <Route exact path="/login" component={Login} />
+                            <Route exact path="/admin" component={AdminHome} />
+                            <Route exact path="/hiringManager" component={HiringManagerHome} />
+                            <Route exact path="/applicant" component={ApplicantHome} />
+                            <Route exact path="/communications" component={CommunicationsHome} />
                             <Route path="/maps" component={Maps} />
                             <Route path="/blog" component={Blog} />
                             <Route path="*" component={NotFound} />

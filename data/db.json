@@ -5,8 +5,16 @@
       "username" : "KEVBOT"
     },
     {
-      "profileStatus" : "user",
-      "username" : "ry guy"
+      "profileStatus" : "applicant",
+      "username" : "RyanJobHunter"
+    },
+    {
+      "profileStatus" : "communications",
+      "username" : "IgorKingofCommunications"
+    },
+    {
+      "profileStatus" : "hiringManager",
+      "username" : "GeofreyTheManager"
     }
   ]
 }

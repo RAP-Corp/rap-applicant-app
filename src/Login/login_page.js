@@ -26,11 +26,13 @@ class Login extends Component {
     e.preventDefault();
     this.props.loginWatcher({
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      history: this.props.history
     });
   }
 
   render() {
+    //debugger;
     let profileStatus = null;
     if (this.props.profile) profileStatus = this.props.profile.profileStatus;
     return (
