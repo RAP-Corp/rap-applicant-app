@@ -1,8 +1,17 @@
-import React, { Component } from 'react'
-import Button from '../../NavButton/NavButton'
+import React, { Component } from 'react';
+import Button from '../../NavButton/NavButton';
+import { connect } from 'react-redux';
 
 class adminHome extends Component {
     render () {
+      let profileStatus = null;
+      if (this.props.profile) profileStatus = this.props.profile.profileStatus;
+      if (profileStatus === null || profileStatus !== "admin"){
+        return (
+          <h2>you are not an admin</h2>
+        )
+      }
+      else {
         return (
             <div className="container">
                 <section className="section">
@@ -20,7 +29,14 @@ class adminHome extends Component {
 
             </div>
         )
+      }
     }
 }
 
-export default adminHome
+const mapStateToProps = (state) => {
+  return {
+    profile: state.login.profile
+  };
+};
+
+export default connect(mapStateToProps)(adminHome);

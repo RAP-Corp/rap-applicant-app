@@ -5,3 +5,7 @@ export function loginWatcher(authParams) {
 export function updateProfile(profile) {
   return { type: 'UPDATE_PROFILE', payload: profile };
 }
+
+export function loginErrorToggle(isError) {
+  return { type: 'LOGIN_ERROR_TOGGLE', payload: isError};
+}

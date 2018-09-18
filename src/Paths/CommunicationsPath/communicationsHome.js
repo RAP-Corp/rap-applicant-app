@@ -1,8 +1,18 @@
-import React, { Component } from 'react'
-import Button from '../../NavButton/NavButton'
+import React, { Component } from 'react';
+import Button from '../../NavButton/NavButton';
+import { connect } from 'react-redux';
 
 class communicationsHome extends Component {
     render () {
+      let profileStatus = null;
+      if (this.props.profile) profileStatus = this.props.profile.profileStatus;
+      if (profileStatus === null || profileStatus !== "communications"){
+
+        return (
+          <h2>you are not a communications</h2>
+        )
+      }
+      else {
         return (
             <div className="container">
                 <section className="section">
@@ -12,7 +22,7 @@ class communicationsHome extends Component {
                             A simple app to demonstrate how lazy loading routes in React works.
                         </h2>
                         <section className="bottom">
-                            <Button name="Go to Applicant Page" link="/maps" />
+                            <Button name="Go to the Good one" link="/maps" />
                             <Button name="Go to the other one" link="/blog" />
                         </section>
                     </div>
@@ -20,7 +30,14 @@ class communicationsHome extends Component {
 
             </div>
         )
+      }
     }
 }
 
-export default communicationsHome
+const mapStateToProps = (state) => {
+  return {
+    profile: state.login.profile
+  };
+};
+
+export default connect(mapStateToProps)(communicationsHome);

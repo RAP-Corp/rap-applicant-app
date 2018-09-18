@@ -32,12 +32,13 @@ class Login extends Component {
   }
 
   render() {
-    //debugger;
     let profileStatus = null;
     if (this.props.profile) profileStatus = this.props.profile.profileStatus;
+    let loginError = null;
+    if (this.props.loginError) loginError = "Username or Password is wrong";
     return (
         <div className="login-page">
-          <div className="inputs">
+          <form onSubmit={this.onSubmit} className="inputs">
             <input
               value={this.state.username}
               onChange={this.handleUserChange}
@@ -49,7 +50,9 @@ class Login extends Component {
               onChange={this.handlePasswordChange}
               className="inputBox"
               placeholder="Password"
+              type="password"
             />
+            <p className="error-text">{loginError}</p>
             <button
               className="loginBtn"
               type='Submit'
@@ -58,7 +61,7 @@ class Login extends Component {
             <Link to="">
               <span className="forgotLink">Forgot your Username or Password?</span>
             </Link>
-          </div>
+          </form>
           {profileStatus}
         </div>
     );
@@ -73,7 +76,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.login.profile
+    profile: state.login.profile,
+    loginError: state.login.loginError
   };
 };
 

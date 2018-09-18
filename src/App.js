@@ -23,9 +23,9 @@ import asyncComponent from './AsyncComponent';
 import store from './store';
 import { Provider } from 'react-redux';
 
-const Home = asyncComponent(() =>
-    import('./Home/Home').then(module => module.default)
-)
+// const Home = asyncComponent(() =>
+//     import('./Home/Home').then(module => module.default)
+// )
 
 const Login = asyncComponent(() =>
     import('./Login/login_page').then(module => module.default)
