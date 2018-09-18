@@ -32,8 +32,8 @@ class Login extends Component {
   }
 
   render() {
-    let profileStatus = null;
-    if (this.props.profile) profileStatus = this.props.profile.profileStatus;
+    // let profileStatus = null;
+    // if (this.props.profile) profileStatus = this.props.profile.profileStatus;
     let loginError = null;
     if (this.props.loginError) loginError = "Username or Password is wrong";
     return (
@@ -58,11 +58,13 @@ class Login extends Component {
               type='Submit'
               onClick={this.onSubmit}
             >Login</button>
-            <Link to="">
+            <Link to="/">
               <span className="forgotLink">Forgot your Username or Password?</span>
             </Link>
+            <Link to="/registration">
+              <span className="forgotLink">Register</span>
+            </Link>
           </form>
-          {profileStatus}
         </div>
     );
   }

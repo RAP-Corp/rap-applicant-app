@@ -7,7 +7,6 @@ class communicationsHome extends Component {
       let profileStatus = null;
       if (this.props.profile) profileStatus = this.props.profile.profileStatus;
       if (profileStatus === null || profileStatus !== "communications"){
-
         return (
           <h2>you are not a communications</h2>
         )

@@ -33,8 +33,6 @@ function* loginEffectSaga(action) {
       }
     }
     yield put(loginErrorToggle(errorBool));
-
-    console.log('Wrong Username')
   } catch (e) {
     console.log("the login call failed: "+ e)
   }

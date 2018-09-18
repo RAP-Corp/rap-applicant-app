@@ -2,19 +2,19 @@
   "user": [
     {
       "profileStatus" : "admin",
-      "username" : "KEVBOT"
+      "username" : "admin"
     },
     {
       "profileStatus" : "applicant",
-      "username" : "RyanJobHunter"
+      "username" : "applicant"
     },
     {
       "profileStatus" : "communications",
-      "username" : "IgorKingofCommunications"
+      "username" : "communications"
     },
     {
       "profileStatus" : "hiringManager",
-      "username" : "GeofreyTheManager"
+      "username" : "hiringManager"
     }
   ]
 }
