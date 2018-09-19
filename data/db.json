@@ -2,19 +2,19 @@
   "user": [
     {
       "profileStatus" : "admin",
-      "username" : "admin"
+      "email" : "admin"
     },
     {
       "profileStatus" : "applicant",
-      "username" : "applicant"
+      "email" : "applicant"
     },
     {
       "profileStatus" : "communications",
-      "username" : "communications"
+      "email" : "communications"
     },
     {
       "profileStatus" : "hiringManager",
-      "username" : "hiringManager"
+      "email" : "hiringManager"
     }
   ]
 }

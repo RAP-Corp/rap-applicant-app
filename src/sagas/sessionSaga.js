@@ -8,7 +8,8 @@ function* loginEffectSaga(action) {
     console.log(response)
     let errorBool = true;
     for(let i=0;i<response.length; i++) {
-      if (response[i].username === (action.payload.username)) {
+      debugger;
+      if (response[i].email === (action.payload.email)) {
         yield put(updateProfile(response[i]));
         switch(response[i].profileStatus) {
           case 'admin':

@@ -9,13 +9,13 @@ import { PropTypes } from 'prop-types';
 class Login extends Component {
   constructor(props){
     super(props)
-    this.state = {value: '', username: '', password: ''};
-    this.handleUserChange = this.handleUserChange.bind(this);
+    this.state = {value: '', email: '', password: ''};
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleUserChange(event) {
-    this.setState({username: event.target.value});
+  handleEmailChange(event) {
+    this.setState({email: event.target.value});
   }
 
   handlePasswordChange(event) {
@@ -25,7 +25,7 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.loginWatcher({
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
       history: this.props.history
     });
@@ -40,10 +40,10 @@ class Login extends Component {
         <div className="login-page">
           <form onSubmit={this.onSubmit} className="inputs">
             <input
-              value={this.state.username}
-              onChange={this.handleUserChange}
+              value={this.state.email}
+              onChange={this.handleEmailChange}
               className="inputBox"
-              placeholder="Username"
+              placeholder="Email"
             />
             <input
               value={this.state.password}
@@ -84,7 +84,7 @@ const mapStateToProps = (state) => {
 };
 
 Login.PropTypes = {
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   loginWatcher: PropTypes.func
 }

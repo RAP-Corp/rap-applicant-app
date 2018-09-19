@@ -5,32 +5,32 @@ import { bindActionCreators } from 'redux';
 import { registrationWatcher } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class applicantRegistration extends Component {
   constructor(props){
     super(props)
     this.state = {
       value: '',
-      username: '',
       password: '',
       cellphone: '',
       firstName: '',
       lastName: '',
       email: '',
-      address: ''
+      address: '',
+      dob: ''
     };
-    this.handleUserChange = this.handleUserChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleCellphoneChange = this.handleCellphoneChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
-  handleUserChange(event) {
-    this.setState({username: event.target.value});
-  }
   handlePasswordChange(event) {
     this.setState({password: event.target.value});
   }
@@ -49,18 +49,22 @@ class applicantRegistration extends Component {
   handleCellphoneChange(event) {
     this.setState({cellphone: event.target.value});
   }
+  handleDateChange(date) {
+    debugger;
+    this.setState({dob: date});
+  }
 
 
   onSubmit = (e) => {
     e.preventDefault();
     this.props.registrationWatcher({
-      username: this.state.username,
       password: this.state.password,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
       address: this.state.address,
       cellphone: this.state.cellphone,
+      dob: this.state.dob,
       history: this.props.history
     });
   }
@@ -72,59 +76,76 @@ class applicantRegistration extends Component {
     // if (this.props.loginError) loginError = "Username or Password is wrong";
     return (
         <div className="login-page">
-          <form onSubmit={this.onSubmit} className="inputs">
-            <input
-              value={this.state.firstName}
-              onChange={this.handleFirstNameChange}
-              className="inputBox"
-              placeholder="First Name"
-            />
-            <input
-              value={this.state.lastName}
-              onChange={this.handleLastNameChange}
-              className="inputBox"
-              placeholder="Last Name"
-            />
-            <input
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-              className="inputBox"
-              placeholder="Email"
-            />
-            <input
-              value={this.state.cellphone}
-              onChange={this.handleCellphoneChange}
-              className="inputBox"
-              placeholder="Cellphone #"
-            />
-            <input
-              value={this.state.address}
-              onChange={this.handleAddressChange}
-              className="inputBox"
-              placeholder="Address"
-            />
-            <input
-              value={this.state.username}
-              onChange={this.handleUserChange}
-              className="inputBox"
-              placeholder="Username"
-            />
-            <input
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-              className="inputBox"
-              placeholder="Password"
-              type="password"
-            />
-            <button
-              className="loginBtn"
-              type='Submit'
-              onClick={this.onSubmit}
-            >Register</button>
-            <Link to="/login">
-              <span className="forgotLink">Already have an account?</span>
-            </Link>
-          </form>
+          <div className="inputs">
+            <form onSubmit={this.onSubmit} >
+            <div className="nameInputs">
+              <label className="inputLabel"> Placeholder </label>
+                <input
+                  value={this.state.firstName}
+                  onChange={this.handleFirstNameChange}
+                  className="inputBox"
+                  placeholder="First Name"
+                />
+              <label className="inputLabel"> Placeholder </label>
+                <input
+                  value={this.state.lastName}
+                  onChange={this.handleLastNameChange}
+                  className="inputBox"
+                  placeholder="Last Name"
+                />
+            </div>
+              <label className="inputLabel"> Placeholder </label>
+              <input
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+                className="inputBox"
+                placeholder="Email"
+              />
+              <label className="inputLabel"> Placeholder </label>
+              <input
+                value={this.state.cellphone}
+                onChange={this.handleCellphoneChange}
+                className="inputBox"
+                placeholder="Cellphone #"
+              />
+              <label className="inputLabel"> Placeholder </label>
+              <DatePicker
+                className="inputBox"
+                selected={this.state.dob}
+                onChange={this.handleDateChange}
+                showYearDropdown
+                dateFormatCalendar="MMMM"
+                scrollableYearDropdown
+                yearDropdownItemNumber={50}
+                maxDate={moment().subtract(18, "years")}
+                dateFormat="DD MMM YYYY"
+                placeholderText="Date of Birth"
+              />
+              <label className="inputLabel"> Placeholder </label>
+              <input
+                value={this.state.address}
+                onChange={this.handleAddressChange}
+                className="inputBox"
+                placeholder="Address"
+              />
+              <label className="inputLabel"> Placeholder </label>
+              <input
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+                className="inputBox"
+                placeholder="Password"
+                type="password"
+              />
+              <button
+                className="loginBtn"
+                type='Submit'
+                onClick={this.onSubmit}
+              >Register</button>
+              <Link to="/login">
+                <span className="forgotLink">Already have an account?</span>
+              </Link>
+            </form>
+            </div>
         </div>
     );
   }
@@ -144,7 +165,7 @@ const mapStateToProps = (state) => {
 };
 
 applicantRegistration.PropTypes = {
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   loginWatcher: PropTypes.func
 }

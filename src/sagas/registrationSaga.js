@@ -8,7 +8,7 @@ function registerUser(registrationParams){
 function* registrationEffectSaga(action) {
   try{
     if(registerUser(action)){
-      let profileObject = {username: action.username, profileStatus: "applicant"}
+      let profileObject = {email: action.email, profileStatus: "applicant"}
       yield put(updateProfile(profileObject))
       action.payload.history.push('/applicant');
     }
