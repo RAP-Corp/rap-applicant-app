@@ -70,83 +70,181 @@ class applicantRegistration extends Component {
   }
 
   render() {
-    // let profileStatus = null;
-    // if (this.props.profile) profileStatus = this.props.profile.profileStatus;
-    // let loginError = null;
-    // if (this.props.loginError) loginError = "Username or Password is wrong";
     return (
-        <div className="login-page">
-          <div className="inputs">
-            <form onSubmit={this.onSubmit} >
-            <div className="nameInputs">
-              <label className="inputLabel"> Placeholder </label>
-                <input
-                  value={this.state.firstName}
-                  onChange={this.handleFirstNameChange}
-                  className="inputBox"
-                  placeholder="First Name"
-                />
-              <label className="inputLabel"> Placeholder </label>
-                <input
-                  value={this.state.lastName}
-                  onChange={this.handleLastNameChange}
-                  className="inputBox"
-                  placeholder="Last Name"
-                />
-            </div>
-              <label className="inputLabel"> Placeholder </label>
-              <input
-                value={this.state.email}
-                onChange={this.handleEmailChange}
-                className="inputBox"
-                placeholder="Email"
-              />
-              <label className="inputLabel"> Placeholder </label>
-              <input
-                value={this.state.cellphone}
-                onChange={this.handleCellphoneChange}
-                className="inputBox"
-                placeholder="Cellphone #"
-              />
-              <label className="inputLabel"> Placeholder </label>
-              <DatePicker
-                className="inputBox"
-                selected={this.state.dob}
-                onChange={this.handleDateChange}
-                showYearDropdown
-                dateFormatCalendar="MMMM"
-                scrollableYearDropdown
-                yearDropdownItemNumber={50}
-                maxDate={moment().subtract(18, "years")}
-                dateFormat="DD MMM YYYY"
-                placeholderText="Date of Birth"
-              />
-              <label className="inputLabel"> Placeholder </label>
-              <input
-                value={this.state.address}
-                onChange={this.handleAddressChange}
-                className="inputBox"
-                placeholder="Address"
-              />
-              <label className="inputLabel"> Placeholder </label>
-              <input
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-                className="inputBox"
-                placeholder="Password"
-                type="password"
-              />
-              <button
-                className="loginBtn"
-                type='Submit'
-                onClick={this.onSubmit}
-              >Register</button>
-              <Link to="/login">
-                <span className="forgotLink">Already have an account?</span>
-              </Link>
-            </form>
-            </div>
+      <div className="container">
+      <div className="inputs">
+        <div className="row">
+          <div className="col-lg-2 mr-3">
+          <label className="inputLabel">First Name:</label>
+          <input
+            value={this.state.firstName}
+            onChange={this.handleFirstNameChange}
+            className="inputBox"
+            placeholder="First Name"
+          />
+          </div>
+          <div className="col-lg-2 mr-3">
+          <label className="inputLabel"> Last Name </label>
+          <input
+            value={this.state.lastName}
+            onChange={this.handleLastNameChange}
+            className="inputBox"
+            placeholder="Last Name"
+          />
+          </div>
         </div>
+        <label className="inputLabel">Email:</label>
+        <div className="row">
+          <div className="col-md-12 mt-0">
+          <input
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            className="inputEmail"
+            placeholder="Email"
+          />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel">Phone:</label>
+          <input
+            value={this.state.cellphone}
+            onChange={this.handleCellphoneChange}
+            className="inputBox"
+            placeholder="Cellphone #"
+          />
+          </div>
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel"> Date of Birth: </label>
+          <DatePicker
+            className="inputBox"
+            selected={this.state.dob}
+            onChange={this.handleDateChange}
+            showYearDropdown
+            dateFormatCalendar="MMMM"
+            scrollableYearDropdown
+            yearDropdownItemNumber={50}
+            maxDate={moment().subtract(18, "years")}
+            dateFormat="DD MMM YYYY"
+            placeholderText="Date of Birth"
+          />
+          </div>
+        </div>
+        <label className="inputLabel">Address:</label>
+        <div className="row">
+          <div className="col-md-12 ml-0">
+          <input
+            value={this.state.address}
+            onChange={this.handleAddressChange}
+            className="inputStreet"
+            placeholder="Street Address"
+          />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel">State:</label>
+          <input
+            /*value={this.state.cellphone}
+            onChange={this.handleCellphoneChange}
+            */
+            className="inputBox"
+            placeholder="Dropdown here"
+          />
+          </div>
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel"> Zipcode: </label>
+          <input
+            /*value={this.state.cellphone}
+            onChange={this.handleCellphoneChange}
+            */
+            className="inputBox"
+            placeholder="Zipcode"
+          />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel">Education Level:</label>
+          <input
+            /*value={this.state.cellphone}
+            onChange={this.handleCellphoneChange}
+            */
+            className="inputBox"
+            placeholder="Dropdown here"
+          />
+          </div>
+          <div className="col-md-2 mr-3">
+          <label className="inputLabel"> Citizenship Status: </label>
+          <input
+            /*value={this.state.cellphone}
+            onChange={this.handleCellphoneChange}
+            */
+            className="inputBox"
+            placeholder="Dropdown here"
+          />
+          </div>
+        </div>
+        <label className="inputLabel">Additional Links:</label>
+        <div className="row">
+          <div className="col-md-12 ml-0">
+          <input
+            /*value={this.state.address}
+            onChange={this.handleAddressChange} */
+            className="inputLinks"
+            placeholder="Put any additional links here"
+          />
+          </div>
+        </div>
+        <label className="inputLabel">Password</label>
+        <div className="row">
+          <div className="col-md-12 ml-0">
+          <input
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            className="inputPassword"
+            placeholder="Password"
+            type="password"
+          />
+          </div>
+        </div>
+        <label className="inputLabel">Confirm Password</label>
+        <div className="row">
+          <div className="col-md-12 ml-0">
+          <input
+          /*
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+          */
+            className="inputPassword"
+            placeholder="Confirm Password"
+            type="password"
+          />
+          </div>
+        </div>
+        <label className="inputLabel">Upload Resume</label>
+        <div className="row">
+          <div className="col-md-12 ml-0">
+          <input
+          /*
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+          */
+            className="inputUpload"
+            placeholder="Upload Resume"
+          />
+          </div>
+        </div>
+        </div>
+        <button
+          className="registerBtn"
+          type='Submit'
+          onClick={this.onSubmit}
+        >Register</button>
+        <Link to="/login">
+          <span className="goToLogin">Already have an account?</span>
+        </Link>
+      </div>
     );
   }
 }
