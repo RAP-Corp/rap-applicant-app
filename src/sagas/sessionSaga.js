@@ -6,7 +6,7 @@ function* loginEffectSaga(action) {
     const response = yield fetch('http://localhost:3000/user')
       .then(response => response.json())
     console.log(response)
-    let errorBool = true;
+    let loginErrorBool = true;
     for(let i=0;i<response.length; i++) {
       debugger;
       if (response[i].email === (action.payload.email)) {
@@ -14,26 +14,26 @@ function* loginEffectSaga(action) {
         switch(response[i].profileStatus) {
           case 'admin':
             action.payload.history.push('/admin');
-            errorBool = false;
+            loginErrorBool = false;
             break;
           case 'hiringManager':
             action.payload.history.push('/hiringManager');
-            errorBool = false;
+            loginErrorBool = false;
             break;
           case 'applicant':
             action.payload.history.push('/applicant');
-            errorBool = false;
+            loginErrorBool = false;
             break;
           case 'communications':
             action.payload.history.push('/communications');
-            errorBool = false;
+            loginErrorBool = false;
             break;
           default:
             break;
         }
       }
     }
-    yield put(loginErrorToggle(errorBool));
+    yield put(loginErrorToggle(loginErrorBool));
   } catch (e) {
     console.log("the login call failed: "+ e)
   }

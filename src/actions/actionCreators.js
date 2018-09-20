@@ -13,3 +13,7 @@ export function updateProfile(profile) {
 export function loginErrorToggle(isError) {
   return { type: 'LOGIN_ERROR_TOGGLE', payload: isError};
 }
+
+export function registrationErrorMessage(errorMessage) {
+  return {type: 'REGISTRATION_ERROR_TOGGLE', payload: errorMessage}
+}

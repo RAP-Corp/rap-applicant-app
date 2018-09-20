@@ -8,6 +8,7 @@ import { PropTypes } from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Dropdown } from 'react-simple-dropdown';
 
 class applicantRegistration extends Component {
   constructor(props){
@@ -20,6 +21,9 @@ class applicantRegistration extends Component {
       lastName: '',
       email: '',
       address: '',
+      additionalLinks: '',
+      passwordConfirm: '',
+      zipCode: '',
       dob: ''
     };
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -29,6 +33,9 @@ class applicantRegistration extends Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleCellphoneChange = this.handleCellphoneChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleZipCodeChange = this.handleZipCodeChange.bind(this);
+    this.handleAdditionalLinksChange = this.handleAdditionalLinksChange.bind(this);
+    this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
   }
 
   handlePasswordChange(event) {
@@ -47,7 +54,16 @@ class applicantRegistration extends Component {
     this.setState({address: event.target.value});
   }
   handleCellphoneChange(event) {
-    this.setState({cellphone: event.target.value});
+    this.setState({cellphone: event.target.value.replace(/\D/,'')});
+  }
+  handleZipCodeChange(event) {
+    this.setState({zipCode: event.target.value.replace(/\D/,'')});
+  }
+  handleAdditionalLinksChange(event) {
+    this.setState({additionalLinks: event.target.value});
+  }
+  handlePasswordConfirmChange(event) {
+    this.setState({passwordConfirm: event.target.value});
   }
   handleDateChange(date) {
     debugger;
@@ -59,17 +75,22 @@ class applicantRegistration extends Component {
     e.preventDefault();
     this.props.registrationWatcher({
       password: this.state.password,
+      passwordConfirm: this.state.passwordConfirm,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
       address: this.state.address,
       cellphone: this.state.cellphone,
       dob: this.state.dob,
+      zipCode: this.state.zipCode,
+      additionalLinks: this.state.additionalLinks,
       history: this.props.history
     });
   }
 
   render() {
+    let loginErrorMessage = null;
+    if (this.props.loginErrorMessage) loginErrorMessage = this.props.loginErrorMessage;
     return (
       <div className="container">
       <div className="inputs">
@@ -108,6 +129,7 @@ class applicantRegistration extends Component {
           <div className="col-md-2 mr-3">
           <label className="inputLabel">Phone:</label>
           <input
+            maxLength={10}
             value={this.state.cellphone}
             onChange={this.handleCellphoneChange}
             className="inputBox"
@@ -145,9 +167,8 @@ class applicantRegistration extends Component {
           <div className="col-md-2 mr-3">
           <label className="inputLabel">State:</label>
           <input
-            /*value={this.state.cellphone}
-            onChange={this.handleCellphoneChange}
-            */
+            //value={this.state.cellphone}
+            //onChange={this.handleCellphoneChange}
             className="inputBox"
             placeholder="Dropdown here"
           />
@@ -155,9 +176,9 @@ class applicantRegistration extends Component {
           <div className="col-md-2 mr-3">
           <label className="inputLabel"> Zipcode: </label>
           <input
-            /*value={this.state.cellphone}
-            onChange={this.handleCellphoneChange}
-            */
+            maxLength={5}
+            value={this.state.zipCode}
+            onChange={this.handleZipCodeChange}
             className="inputBox"
             placeholder="Zipcode"
           />
@@ -176,21 +197,24 @@ class applicantRegistration extends Component {
           </div>
           <div className="col-md-2 mr-3">
           <label className="inputLabel"> Citizenship Status: </label>
-          <input
-            /*value={this.state.cellphone}
-            onChange={this.handleCellphoneChange}
-            */
-            className="inputBox"
-            placeholder="Dropdown here"
-          />
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
           </div>
         </div>
         <label className="inputLabel">Additional Links:</label>
         <div className="row">
           <div className="col-md-12 ml-0">
           <input
-            /*value={this.state.address}
-            onChange={this.handleAddressChange} */
+            value={this.state.additionalLinks}
+            onChange={this.handleAdditionalLinksChange}
             className="inputLinks"
             placeholder="Put any additional links here"
           />
@@ -200,6 +224,7 @@ class applicantRegistration extends Component {
         <div className="row">
           <div className="col-md-12 ml-0">
           <input
+            maxLength={20}
             value={this.state.password}
             onChange={this.handlePasswordChange}
             className="inputPassword"
@@ -212,10 +237,9 @@ class applicantRegistration extends Component {
         <div className="row">
           <div className="col-md-12 ml-0">
           <input
-          /*
-            value={this.state.password}
-            onChange={this.handlePasswordChange}
-          */
+            maxLength={20}
+            value={this.state.passwordConfirm}
+            onChange={this.handlePasswordConfirmChange}
             className="inputPassword"
             placeholder="Confirm Password"
             type="password"
@@ -236,6 +260,7 @@ class applicantRegistration extends Component {
           </div>
         </div>
         </div>
+        <p className="error-text">{loginErrorMessage}</p>
         <button
           className="registerBtn"
           type='Submit'
@@ -257,16 +282,15 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.login.profile,
-    loginError: state.login.loginError
+    loginErrorMessage: state.registration.loginErrorMessage
   };
 };
 
-applicantRegistration.PropTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  loginWatcher: PropTypes.func
-}
+// applicantRegistration.PropTypes = {
+//   email: PropTypes.string.isRequired,
+//   password: PropTypes.string.isRequired,
+//   loginWatcher: PropTypes.func
+// }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(applicantRegistration);

@@ -14,7 +14,22 @@ body {
 button:hover {
   background-color: #b7b7b7;
 }
+.error-text {
+  color: #ff2800;
+  width: 100%;
+  margin-left: 42%;
+  display: inline-block;
+}
 
+#dropdownMenuButton{
+  background-color:white;
+  color: black;
+  width: 115%;
+  padding-bottom: 0px;
+  text-align: center;
+  border-color: #b7b7b7;
+  border-radius: 0;
+}
 .container {
   width: 100%;
 }
