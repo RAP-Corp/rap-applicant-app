@@ -24,6 +24,7 @@ class applicantRegistration extends Component {
       additionalLinks: '',
       passwordConfirm: '',
       zipCode: '',
+      citizenship: '',
       dob: ''
     };
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -199,12 +200,12 @@ class applicantRegistration extends Component {
           <label className="inputLabel"> Citizenship Status: </label>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  Citizenship Status
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <option class="dropdown-item" value="US_Citizen">U.S. Citizen</option>
+                  <option class="dropdown-item" >Visa</option>
+                  <option class="dropdown-item" >Eskimo</option>
                 </div>
             </div>
           </div>
